@@ -1,0 +1,31 @@
+//as (
+
+  select to_date(get(split(FLIGHT_DETAILS, '//' ), 0)) as Date, 
+  get(split(FLIGHT_DETAILS, '//' ), 1) as FlightNumber, 
+  get(split(FLIGHT_DETAILS, '//' ), 2) as "place",
+  get(split(get(split(FLIGHT_DETAILS, '//' ), 2), '-' ), 0) as "from",
+  get(split(get(split(FLIGHT_DETAILS, '//' ), 2), '-' ), 1) as "to",
+  get(split(FLIGHT_DETAILS, '//' ), 3) as Class,
+  to_decimal(get(split(FLIGHT_DETAILS, '//' ), 4)) as Price,
+  to_boolean(FLOW_CARD) as FlowCard
+
+  /*  CREATE TABLE FlowCardHolders (
+       Date,
+       FlightNumber,
+       "from",
+      FlowCard = 'YES'
+  
+)
+*/
+
+
+from "TIL_PLAYGROUND"."PREPPIN_DATA_INPUTS"."PD2024_WK01"
+  where FlowCard = 'FALSE'
+
+ // from "TIL_PLAYGROUND"."PREPPIN_DATA_INPUTS"."PD2024_WK01"
+  //where FlowCard = 'TRUE'
+
+
+//)
+
+
